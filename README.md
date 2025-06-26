@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من قلبي إلچ - هدية رومانسية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>من قلبي إليه - هدية شعرية رومانسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+            background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
             color: #5a3d5c;
             min-height: 100vh;
             display: flex;
@@ -36,8 +36,9 @@
             height: 100%;
             background: url('https://i.ibb.co/mP71DTN/IMG-2936.jpg') no-repeat center center;
             background-size: cover;
-            opacity: 0.3;
+            opacity: 0.5;
             z-index: -1;
+            filter: blur(3px);
         }
         
         .container {
@@ -45,40 +46,16 @@
             width: 100%;
             text-align: center;
             padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.92);
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(252, 165, 176, 0.35);
             position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
             z-index: 2;
         }
         
-        .container::before {
-            content: "";
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            background: linear-gradient(45deg, #ffcce0, #ffdde7, #ffcce0);
-            z-index: -1;
-            border-radius: 40px;
-            animation: gradientBG 15s ease infinite;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
         .heart-icon {
-            font-size: 2rem;
-            color: #fca5b0;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            color: #ff6b9d;
+            margin-bottom: 20px;
             animation: pulse 2s infinite;
-            text-shadow: 0 0 10px rgba(252, 165, 176, 0.5);
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.7);
         }
         
         @keyframes pulse {
@@ -88,18 +65,16 @@
         }
         
         h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             color: #9d3b6e;
             margin-bottom: 30px;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 0 2px 8px rgba(157, 59, 110, 0.3);
             letter-spacing: 1px;
         }
         
         .poem-container {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 20px;
-            padding: 40px 30px;
+            padding: 40px 20px;
             margin: 30px 0;
             position: relative;
             min-height: 220px;
@@ -107,20 +82,24 @@
             flex-direction: column;
             justify-content: center;
             transition: all 0.5s ease;
-            border: 2px solid rgba(252, 165, 176, 0.3);
+            background: rgba(255, 182, 193, 0.2); /* خلفية وردية شفافة خفيفة */
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
         }
         
         .poem-box {
-            font-size: 1.6rem;
-            line-height: 2.4;
-            color: #7d5a5a;
-            font-weight: 500;
+            font-size: 1.8rem;
+            line-height: 2.5;
+            color: #7d3c5c;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
         }
         
         .poem-line {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            margin: 10px 0;
         }
         
         .poem-line.show {
@@ -129,20 +108,20 @@
         }
         
         .btn-container {
-            margin: 30px 0;
+            margin: 40px 0 20px;
         }
         
         #newPoemBtn {
-            background: linear-gradient(145deg, #fca5b0, #e8919d);
+            background: linear-gradient(145deg, #ff6b9d, #e84a7e);
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 18px 50px;
-            font-size: 1.5rem;
+            padding: 20px 60px;
+            font-size: 1.7rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(252, 165, 176, 0.5);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.5);
             position: relative;
             overflow: hidden;
             letter-spacing: 1px;
@@ -150,7 +129,7 @@
         
         #newPoemBtn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(252, 165, 176, 0.7);
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.7);
         }
         
         #newPoemBtn:active {
@@ -180,56 +159,56 @@
         }
         
         .fade-in {
-            animation: fadeIn 1.2s ease forwards;
+            animation: fadeIn 1.5s ease forwards;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
-            }
-            
-            .poem-container {
-                padding: 30px 20px;
+                font-size: 2.8rem;
             }
             
             .poem-box {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
                 line-height: 2.2;
+            }
+            
+            #newPoemBtn {
+                padding: 18px 50px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .poem-box {
+                font-size: 1.3rem;
+                line-height: 2.0;
             }
             
             #newPoemBtn {
                 padding: 16px 40px;
                 font-size: 1.3rem;
             }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .poem-box {
-                font-size: 1.2rem;
-                line-height: 2.0;
-            }
-            
-            #newPoemBtn {
-                padding: 14px 35px;
-                font-size: 1.2rem;
-            }
             
             .container {
-                padding: 30px 20px;
+                padding: 20px 15px;
+            }
+            
+            .heart-icon {
+                font-size: 2.5rem;
             }
         }
         
         /* Floating hearts */
         .heart {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #fca5b0;
+            width: 24px;
+            height: 24px;
+            background-color: #ff6b9d;
             opacity: 0;
             pointer-events: none;
             z-index: 10;
@@ -238,20 +217,20 @@
         .heart::before, .heart::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #fca5b0;
+            width: 24px;
+            height: 24px;
+            background-color: #ff6b9d;
             border-radius: 50%;
         }
         
         .heart::before {
-            top: -10px;
+            top: -12px;
             left: 0;
         }
         
         .heart::after {
             top: 0;
-            left: -10px;
+            left: -12px;
         }
         
         @keyframes float {
@@ -261,15 +240,37 @@
             }
             100% {
                 opacity: 0;
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-120px) rotate(360deg);
             }
+        }
+        
+        /* Decorative elements */
+        .floating-text {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.2);
+            font-size: 6rem;
+            font-weight: 800;
+            z-index: 1;
+            pointer-events: none;
+            transform: rotate(-25deg);
+            top: 20%;
+            left: 5%;
+            animation: floatText 30s linear infinite;
+        }
+        
+        @keyframes floatText {
+            0% { transform: rotate(-25deg) translateX(-100px); }
+            100% { transform: rotate(-25deg) translateX(100px); }
         }
     </style>
 </head>
 <body>
+    <div class="floating-text">♥ حب ♥</div>
+    <div class="floating-text" style="top: 70%; left: 70%; transform: rotate(15deg);">♥ رومانسية ♥</div>
+    
     <div class="container fade-in">
         <div class="heart-icon">❤</div>
-        <h1>من قلبي إلچ</h1>
+        <h1>من قلبي إليه</h1>
         
         <div class="poem-container">
             <div class="poem-box" id="poemBox">
@@ -413,7 +414,7 @@
         
         // إنشاء عناصر القلوب
         function createHearts() {
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.classList.add('heart');
@@ -425,7 +426,7 @@
                     setTimeout(() => {
                         heart.remove();
                     }, 5000);
-                }, i * 150);
+                }, i * 100);
             }
         }
         
