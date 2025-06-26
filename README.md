@@ -14,7 +14,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+            background: linear-gradient(135deg, #ffe6f0, #fff0f5);
             color: #5a3d5c;
             min-height: 100vh;
             display: flex;
@@ -36,9 +36,8 @@
             height: 100%;
             background: url('https://i.ibb.co/mP71DTN/IMG-2936.jpg') no-repeat center center;
             background-size: cover;
-            opacity: 0.5;
+            opacity: 0.4;
             z-index: -1;
-            filter: blur(3px);
         }
         
         .container {
@@ -52,10 +51,10 @@
         
         .heart-icon {
             font-size: 3rem;
-            color: #ff6b9d;
+            color: #fca5b0;
             margin-bottom: 20px;
             animation: pulse 2s infinite;
-            text-shadow: 0 0 20px rgba(255, 107, 157, 0.7);
+            text-shadow: 0 0 20px rgba(252, 165, 176, 0.5);
         }
         
         @keyframes pulse {
@@ -69,12 +68,14 @@
             color: #9d3b6e;
             margin-bottom: 30px;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(157, 59, 110, 0.3);
+            text-shadow: 0 2px 8px rgba(157, 59, 110, 0.2);
             letter-spacing: 1px;
         }
         
         .poem-container {
-            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 40px 30px;
             margin: 30px 0;
             position: relative;
             min-height: 220px;
@@ -82,17 +83,15 @@
             flex-direction: column;
             justify-content: center;
             transition: all 0.5s ease;
-            background: rgba(255, 182, 193, 0.2); /* خلفية وردية شفافة خفيفة */
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(252, 165, 176, 0.3);
+            border: 2px solid rgba(252, 165, 176, 0.2);
         }
         
         .poem-box {
             font-size: 1.8rem;
             line-height: 2.5;
             color: #7d3c5c;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+            font-weight: 500;
         }
         
         .poem-line {
@@ -112,7 +111,7 @@
         }
         
         #newPoemBtn {
-            background: linear-gradient(145deg, #ff6b9d, #e84a7e);
+            background: linear-gradient(145deg, #fca5b0, #e8919d);
             color: white;
             border: none;
             border-radius: 50px;
@@ -121,7 +120,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.5);
+            box-shadow: 0 10px 25px rgba(252, 165, 176, 0.4);
             position: relative;
             overflow: hidden;
             letter-spacing: 1px;
@@ -129,7 +128,7 @@
         
         #newPoemBtn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.7);
+            box-shadow: 0 15px 30px rgba(252, 165, 176, 0.6);
         }
         
         #newPoemBtn:active {
@@ -201,6 +200,10 @@
             .heart-icon {
                 font-size: 2.5rem;
             }
+            
+            .poem-container {
+                padding: 30px 20px;
+            }
         }
         
         /* Floating hearts */
@@ -208,7 +211,7 @@
             position: absolute;
             width: 24px;
             height: 24px;
-            background-color: #ff6b9d;
+            background-color: #fca5b0;
             opacity: 0;
             pointer-events: none;
             z-index: 10;
@@ -219,7 +222,7 @@
             position: absolute;
             width: 24px;
             height: 24px;
-            background-color: #ff6b9d;
+            background-color: #fca5b0;
             border-radius: 50%;
         }
         
@@ -247,7 +250,7 @@
         /* Decorative elements */
         .floating-text {
             position: absolute;
-            color: rgba(255, 107, 157, 0.2);
+            color: rgba(252, 165, 176, 0.15);
             font-size: 6rem;
             font-weight: 800;
             z-index: 1;
@@ -284,8 +287,14 @@
     </div>
 
     <script>
-        // مجموعة الأشعار الرومانسية (20 شعر)
+        // مجموعة الأشعار الرومانسية (3 شعر فقط)
         const poems = [
+            [
+                "أنتِ النور الذي يضيء دربي",
+                "والماء الذي يروي ظمأ روحي",
+                "أنتِ الحب الذي يملأ قلبي",
+                "وأنتِ الحياة التي أعيشها"
+            ],
             [
                 "في عينيكِ وجدت وطني وحبي",
                 "وفيكِ رأيتُ دربي ومنتهى طريقي",
@@ -296,115 +305,7 @@
                 "أشتاق إليكِ كما يشتاق الظمأ للماء",
                 "وكما يشتاق العصفور للأغصان في الربيع",
                 "أشتاق لدفءِ يديكِ وهمسِ كلامكِ",
-                "فهل من لقاءٍ قريبٍ يطفئ لهيب الشوق في داخلي؟"
-            ],
-            [
-                "حبكِ في قلبي كالورد في البستان",
-                "ينمو ويزدهر مع كل نفسٍ أتنفسه",
-                "فكوني لي كما الندى للورد",
-                "أكون لكِ كالبستان الذي يحمي الورد من حر الصيف"
-            ],
-            [
-                "أحبكِ.. كلمتان خفيفتان على اللسان",
-                "ولكنهما تزنان في قلبي الجبال",
-                "أحبكِ.. هي نغمةٌ أعزفها كل صباح",
-                "لأبدأ يومي بابتسامةٍ وفرحٍ وأملٍ لا يضاهى"
-            ],
-            [
-                "لو أن البحرَ مدادٌ والقلمُ من الريحان",
-                "والنجومُ كلماتٌ والكونُ صفحاتٌ",
-                "ما كتبتْ كفايةً عن حبكِ يا سيدتي",
-                "فحبكِ أكبر من أن يحويه كتابٌ أو يصفه بيان"
-            ],
-            [
-                "يا حبيبتي، أنتِ النور في ظلماتي",
-                "والسكن في وحشتي، والأمل في همومي",
-                "لكِ في قلبي مكانٌ لا يُقاس",
-                "ولكِ في روحي حضورٌ لا يزول"
-            ],
-            [
-                "كلما ابتعدتِ زاد اشتياقي",
-                "وكلما اقتربتِ ازداد هيامي",
-                "فأنتِ يا حياتي كل شيءٍ",
-                "ولولاكِ ما عرفت معنى الحياة"
-            ],
-            [
-                "أرسمُ اسمكِ على جنبات قلبي",
-                "وأكتبُ حبكِ في كل نبضةٍ من نبضاتي",
-                "فأنتِ الحلم الذي طالما انتظرته",
-                "وأنتِ الحب الذي طالما حلمت به"
-            ],
-            [
-                "في ليل البعدِ، يا قمرَ حياتي",
-                "أبحثُ عنكِ بين النجومِ الساطعة",
-                "فأراكِ في كل نجمةٍ تتلألأ",
-                "وأسمعُ همسكِ في كل نسيمٍ هفهاف"
-            ],
-            [
-                "يا حبيبتي، كم أشتاق لرؤياكِ",
-                "ولسماعِ صوتكِ كالموسيقى في أذني",
-                "أشتاق لضحكتكِ كالربيعِ الزاهر",
-                "أشتاق لكل شيءٍ فيكِ، فهل من لقاء؟"
-            ],
-            [
-                "حبي لكِ يا حياتي بحرٌ لا ساحل له",
-                "وسحابٌ لا ينضبُ ماؤه أبداً",
-                "فهل تقبلين هذا الحبَّ العظيم؟",
-                "وهل تسمحين له أن يكون مأواكِ للأبد؟"
-            ],
-            [
-                "في قلبي سراديبُ من الأشواق",
-                "تتحدث عنكِ في صمت الليالي",
-                "وتهمسُ باسمكِ في كل حين",
-                "فهل تسمعين همس قلبي إليكِ؟"
-            ],
-            [
-                "أحبكِ أكثر من كل الكلمات",
-                "وأكثر من كل النجوم في السما",
-                "وأكثر من كل الأيام التي مضت",
-                "وأكثر من كل الأيام التي ستأتي"
-            ],
-            [
-                "أنتِ النور الذي يضيء دربي",
-                "والماء الذي يروي ظمأ روحي",
-                "أنتِ الحب الذي يملأ قلبي",
-                "وأنتِ الحياة التي أعيشها"
-            ],
-            [
-                "يا حبيبتي، أنتِ أغلى من الدرر",
-                "وأثمن من كل الكنوز في الوجود",
-                "فأنتِ نعمةٌ من الله لا تُقدر بثمن",
-                "وحبكِ هديةٌ لا تعوض"
-            ],
-            [
-                "أراكِ في كل زهرةٍ تتفتح",
-                "وفي كل نجمةٍ تتلألأ في السماء",
-                "أراكِ في ضياء القمر",
-                "وفي دفء الشمس في الصباح"
-            ],
-            [
-                "حبي لكِ يا حياتي بحرٌ عميق",
-                "لا يعرف حدوداً ولا شواطئ",
-                "فهل تقبلين أن تكوني سفينتي؟",
-                "وأكون بحاركِ في هذا البحر الواسع"
-            ],
-            [
-                "أشتاق إليكِ كما يشتاق الطفل لأمه",
-                "وكما يشتاق المسافر لموطنه",
-                "أشتاق إلى دفءِ حضوركِ",
-                "وإلى رائحتكِ التي تملأ كل مكان"
-            ],
-            [
-                "يا حبيبتي، أنتِ القصيدة التي لا تنتهي",
-                "واللوحة التي لا تكتمل",
-                "أنتِ الحلم الذي لا يزول",
-                "وأنتِ الحب الذي لا ينتهي"
-            ],
-            [
-                "في عينيكِ رأيتُ الكونَ كله",
-                "ورأيتُ مستقبلي وحاضري وماضيي",
-                "فلا تبتعدي عني أبداً",
-                "فأنتِ كل شيءٍ في حياتي"
+                "فهل من لقاءٍ قريبٍ يطفئ لهيب الشوق؟"
             ]
         ];
 
@@ -414,7 +315,7 @@
         
         // إنشاء عناصر القلوب
         function createHearts() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.classList.add('heart');
@@ -426,7 +327,7 @@
                     setTimeout(() => {
                         heart.remove();
                     }, 5000);
-                }, i * 100);
+                }, i * 150);
             }
         }
         
