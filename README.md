@@ -79,7 +79,7 @@
         }
         
         .poem-container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             border-radius: 20px;
             padding: 35px 25px;
             margin: 30px 0;
@@ -91,6 +91,7 @@
             transition: all 0.5s ease;
             box-shadow: 0 10px 30px rgba(252, 165, 176, 0.3);
             border: 1px solid rgba(252, 165, 176, 0.2);
+            overflow: hidden;
         }
         
         .poem-box {
@@ -98,6 +99,8 @@
             line-height: 2.5;
             color: #7d3c5c;
             font-weight: 500;
+            position: relative;
+            z-index: 2;
         }
         
         .poem-line {
@@ -157,6 +160,28 @@
         
         #newPoemBtn:hover::after {
             transform: translateX(100%);
+        }
+        
+        /* أنيميشن القلوب */
+        .heart {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            font-size: 2.5rem;
+            color: rgba(211, 47, 47, 0.6);
+            animation: floatHeart 1.5s ease-out forwards;
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-80px) translateX(20px) rotate(45deg);
+                opacity: 0;
+            }
         }
         
         /* Animations */
@@ -229,23 +254,23 @@
             }
         }
         
-        /* Decorative elements */
-        .floating-text {
+        /* رسوم متحركة للخلفية */
+        .bg-heart {
             position: absolute;
-            color: rgba(252, 165, 176, 0.15);
-            font-size: 6rem;
-            font-weight: 800;
-            z-index: 1;
+            z-index: 0;
             pointer-events: none;
-            transform: rotate(-25deg);
-            top: 20%;
-            left: 5%;
-            animation: floatText 30s linear infinite;
+            font-size: 1.5rem;
+            color: rgba(252, 165, 176, 0.2);
+            animation: bgFloat 20s linear infinite;
         }
         
-        @keyframes floatText {
-            0% { transform: rotate(-25deg) translateX(-100px); }
-            100% { transform: rotate(-25deg) translateX(100px); }
+        @keyframes bgFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -256,6 +281,12 @@
         </div>
         
         <div class="poem-container">
+            <!-- قلوب الخلفية المتحركة -->
+            <div class="bg-heart" style="left: 10%; animation-delay: 0s;">❤</div>
+            <div class="bg-heart" style="left: 30%; animation-delay: 5s;">❤</div>
+            <div class="bg-heart" style="left: 70%; animation-delay: 10s;">❤</div>
+            <div class="bg-heart" style="left: 90%; animation-delay: 15s;">❤</div>
+            
             <div class="poem-box" id="poemBox">
                 <!-- الشعر سيتم عرضه هنا بالجافاسكريبت -->
             </div>
@@ -293,6 +324,34 @@
         const poemBox = document.getElementById('poemBox');
         const newPoemBtn = document.getElementById('newPoemBtn');
         const title = document.querySelector('h1');
+        const poemContainer = document.querySelector('.poem-container');
+        
+        // إنشاء قلوب عند النقر
+        function createHearts() {
+            // عدد قليل من القلوب (3-5)
+            const heartCount = 3 + Math.floor(Math.random() * 3);
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                
+                // وضع عشوائي داخل مربع الشعر
+                const leftPos = 20 + Math.random() * 60;
+                const topPos = 50 + Math.random() * 30;
+                
+                heart.style.left = `${leftPos}%`;
+                heart.style.top = `${topPos}%`;
+                heart.style.animationDelay = `${i * 0.2}s`;
+                
+                poemContainer.appendChild(heart);
+                
+                // إزالة القلب بعد انتهاء الرسوم المتحركة
+                setTimeout(() => {
+                    heart.remove();
+                }, 1500);
+            }
+        }
         
         // إضافة تفاعلية للعنوان
         title.addEventListener('mouseenter', () => {
@@ -317,6 +376,9 @@
         
         // عرض شعر عشوائي مع حركة ناعمة
         function displayRandomPoem() {
+            // إنشاء قلوب متحركة
+            createHearts();
+            
             // إخفاء الأسطر الحالية
             const lines = poemBox.querySelectorAll('.poem-line');
             lines.forEach(line => {
