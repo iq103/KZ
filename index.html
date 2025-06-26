@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من قلبي إليه - هدية شعرية رومانسية</title>
+    <title>أنسيت روحي - هدية شعرية</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -38,44 +38,50 @@
             background-size: cover;
             opacity: 0.4;
             z-index: -1;
+            filter: blur(2px);
         }
         
         .container {
             max-width: 800px;
             width: 100%;
             text-align: center;
-            padding: 40px 30px;
+            padding: 30px;
             position: relative;
             z-index: 2;
         }
         
-        .heart-icon {
-            font-size: 3rem;
-            color: #fca5b0;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-            text-shadow: 0 0 20px rgba(252, 165, 176, 0.5);
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        .title-container {
+            margin-bottom: 30px;
+            perspective: 800px;
         }
         
         h1 {
             font-size: 3.5rem;
-            color: #9d3b6e;
-            margin-bottom: 30px;
+            color: #d32f2f;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(157, 59, 110, 0.2);
+            text-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
             letter-spacing: 1px;
+            display: inline-block;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            animation: floatTitle 6s ease-in-out infinite;
+        }
+        
+        @keyframes floatTitle {
+            0%, 100% { 
+                transform: translateY(0) rotateX(5deg);
+                text-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+            }
+            50% { 
+                transform: translateY(-15px) rotateX(-5deg);
+                text-shadow: 0 15px 25px rgba(211, 47, 47, 0.5);
+            }
         }
         
         .poem-container {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
-            padding: 40px 30px;
+            padding: 35px 25px;
             margin: 30px 0;
             position: relative;
             min-height: 220px;
@@ -84,7 +90,7 @@
             justify-content: center;
             transition: all 0.5s ease;
             box-shadow: 0 10px 30px rgba(252, 165, 176, 0.3);
-            border: 2px solid rgba(252, 165, 176, 0.2);
+            border: 1px solid rgba(252, 165, 176, 0.2);
         }
         
         .poem-box {
@@ -98,7 +104,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
-            margin: 10px 0;
+            margin: 12px 0;
         }
         
         .poem-line.show {
@@ -107,11 +113,11 @@
         }
         
         .btn-container {
-            margin: 40px 0 20px;
+            margin: 35px 0 15px;
         }
         
         #newPoemBtn {
-            background: linear-gradient(145deg, #fca5b0, #e8919d);
+            background: linear-gradient(145deg, #d32f2f, #b71c1c);
             color: white;
             border: none;
             border-radius: 50px;
@@ -120,7 +126,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(252, 165, 176, 0.4);
+            box-shadow: 0 10px 25px rgba(211, 47, 47, 0.4);
             position: relative;
             overflow: hidden;
             letter-spacing: 1px;
@@ -128,11 +134,13 @@
         
         #newPoemBtn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(252, 165, 176, 0.6);
+            box-shadow: 0 15px 30px rgba(211, 47, 47, 0.6);
+            background: linear-gradient(145deg, #b71c1c, #d32f2f);
         }
         
         #newPoemBtn:active {
-            transform: translateY(2px);
+            transform: translateY(2px) scale(0.98);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.5);
         }
         
         #newPoemBtn::after {
@@ -142,7 +150,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             transform: translateX(-100%);
             transition: transform 0.5s ease;
         }
@@ -164,27 +172,31 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             
             .poem-box {
-                font-size: 1.5rem;
-                line-height: 2.2;
+                font-size: 1.6rem;
+                line-height: 2.3;
             }
             
             #newPoemBtn {
                 padding: 18px 50px;
                 font-size: 1.5rem;
             }
+            
+            .container {
+                padding: 25px;
+            }
         }
         
         @media (max-width: 480px) {
             h1 {
-                font-size: 2.3rem;
+                font-size: 2.4rem;
             }
             
             .poem-box {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
                 line-height: 2.0;
             }
             
@@ -197,53 +209,23 @@
                 padding: 20px 15px;
             }
             
-            .heart-icon {
-                font-size: 2.5rem;
+            .poem-container {
+                padding: 25px 15px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 2.1rem;
             }
             
-            .poem-container {
-                padding: 30px 20px;
+            .poem-box {
+                font-size: 1.2rem;
             }
-        }
-        
-        /* Floating hearts */
-        .heart {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background-color: #fca5b0;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 10;
-        }
-        
-        .heart::before, .heart::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background-color: #fca5b0;
-            border-radius: 50%;
-        }
-        
-        .heart::before {
-            top: -12px;
-            left: 0;
-        }
-        
-        .heart::after {
-            top: 0;
-            left: -12px;
-        }
-        
-        @keyframes float {
-            0% {
-                opacity: 1;
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-120px) rotate(360deg);
+            
+            #newPoemBtn {
+                padding: 14px 35px;
+                font-size: 1.2rem;
             }
         }
         
@@ -268,12 +250,10 @@
     </style>
 </head>
 <body>
-    <div class="floating-text">♥ حب ♥</div>
-    <div class="floating-text" style="top: 70%; left: 70%; transform: rotate(15deg);">♥ رومانسية ♥</div>
-    
     <div class="container fade-in">
-        <div class="heart-icon">❤</div>
-        <h1>من قلبي إليه</h1>
+        <div class="title-container">
+            <h1>أنسيت روحي</h1>
+        </div>
         
         <div class="poem-container">
             <div class="poem-box" id="poemBox">
@@ -290,52 +270,53 @@
         // مجموعة الأشعار الرومانسية (3 شعر فقط)
         const poems = [
             [
-                "أنتِ النور الذي يضيء دربي",
-                "والماء الذي يروي ظمأ روحي",
-                "أنتِ الحب الذي يملأ قلبي",
-                "وأنتِ الحياة التي أعيشها"
+                "أنسيت روحي بين يديكِ حبيبتي",
+                "وأضاعني الشوق في عينيكِ",
+                "فهل من رحمةٍ تعيد الروح لصاحبها",
+                "أم ستبقينَ حبيبتي تسرقين الروح مني؟"
             ],
             [
-                "في عينيكِ وجدت وطني وحبي",
-                "وفيكِ رأيتُ دربي ومنتهى طريقي",
-                "فلا تبتعدي، فبدونكِ يا حبيبتي",
-                "أكون كطيرٍ بلا جناحٍ ولا أملٍ في التحليق"
+                "لو تدري كم أشتاق لرؤياكِ",
+                "لكُنتِ ترحمين قلبي من لوعته",
+                "فيا حبيبتي، يا من أخذتِ الروح والقلب",
+                "هل من لقاءٍ يطفئ نار اشتياقي؟"
             ],
             [
-                "أشتاق إليكِ كما يشتاق الظمأ للماء",
-                "وكما يشتاق العصفور للأغصان في الربيع",
-                "أشتاق لدفءِ يديكِ وهمسِ كلامكِ",
-                "فهل من لقاءٍ قريبٍ يطفئ لهيب الشوق؟"
+                "أنا ذلك المسافر في دروب العشق",
+                "والسائر في رحاب حبكِ",
+                "فإن نسيت روحي، فلا تنسي",
+                "أنكِ أنتِ الروح التي تبحث عنها"
             ]
         ];
 
         // عناصر DOM
         const poemBox = document.getElementById('poemBox');
         const newPoemBtn = document.getElementById('newPoemBtn');
+        const title = document.querySelector('h1');
         
-        // إنشاء عناصر القلوب
-        function createHearts() {
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.classList.add('heart');
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.animation = `float ${Math.random() * 3 + 2}s linear forwards`;
-                    document.body.appendChild(heart);
-                    
-                    // إزالة القلب بعد انتهاء الرسوم المتحركة
-                    setTimeout(() => {
-                        heart.remove();
-                    }, 5000);
-                }, i * 150);
-            }
-        }
+        // إضافة تفاعلية للعنوان
+        title.addEventListener('mouseenter', () => {
+            title.style.animation = 'none';
+            setTimeout(() => {
+                title.style.animation = 'floatTitle 6s ease-in-out infinite';
+            }, 10);
+        });
+        
+        // إضافة تأثير النقر للزر
+        newPoemBtn.addEventListener('mousedown', () => {
+            newPoemBtn.style.transform = 'translateY(2px) scale(0.98)';
+        });
+        
+        newPoemBtn.addEventListener('mouseup', () => {
+            newPoemBtn.style.transform = 'translateY(-5px)';
+        });
+        
+        newPoemBtn.addEventListener('mouseleave', () => {
+            newPoemBtn.style.transform = 'translateY(0)';
+        });
         
         // عرض شعر عشوائي مع حركة ناعمة
         function displayRandomPoem() {
-            // إنشاء قلوب متحركة
-            createHearts();
-            
             // إخفاء الأسطر الحالية
             const lines = poemBox.querySelectorAll('.poem-line');
             lines.forEach(line => {
