@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>من قلبي إلچ - هدية رومانسية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,9 +13,9 @@
         }
         
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #ffe6f0, #fff0f5);
-            color: #444;
+            color: #5a3d5c;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -23,20 +23,62 @@
             justify-content: center;
             padding: 20px;
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co/mP71DTN/IMG-2936.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
         }
         
         .container {
             max-width: 800px;
             width: 100%;
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(252, 165, 176, 0.35);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            z-index: 2;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, #ffcce0, #ffdde7, #ffcce0);
+            z-index: -1;
+            border-radius: 40px;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .heart-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #fca5b0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             animation: pulse 2s infinite;
+            text-shadow: 0 0 10px rgba(252, 165, 176, 0.5);
         }
         
         @keyframes pulse {
@@ -46,18 +88,18 @@
         }
         
         h1 {
-            font-size: 3.5rem;
-            color: #6d2e46;
+            font-size: 3.2rem;
+            color: #9d3b6e;
             margin-bottom: 30px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
             font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
         }
         
         .poem-container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(252, 165, 176, 0.3);
-            padding: 40px;
+            padding: 40px 30px;
             margin: 30px 0;
             position: relative;
             min-height: 220px;
@@ -65,25 +107,14 @@
             flex-direction: column;
             justify-content: center;
             transition: all 0.5s ease;
-        }
-        
-        .poem-container::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 30px;
-            border: 2px dashed #fca5b0;
-            z-index: -1;
-            opacity: 0.5;
+            border: 2px solid rgba(252, 165, 176, 0.3);
         }
         
         .poem-box {
-            font-size: 1.5rem;
-            line-height: 2.2;
-            color: #5a3d5c;
+            font-size: 1.6rem;
+            line-height: 2.4;
+            color: #7d5a5a;
+            font-weight: 500;
         }
         
         .poem-line {
@@ -102,27 +133,28 @@
         }
         
         #newPoemBtn {
-            background: linear-gradient(145deg, #fca5b0, #d88592);
+            background: linear-gradient(145deg, #fca5b0, #e8919d);
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 16px 45px;
-            font-size: 1.4rem;
-            font-weight: 500;
+            padding: 18px 50px;
+            font-size: 1.5rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(252, 165, 176, 0.4);
+            box-shadow: 0 8px 20px rgba(252, 165, 176, 0.5);
             position: relative;
             overflow: hidden;
+            letter-spacing: 1px;
         }
         
         #newPoemBtn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(252, 165, 176, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(252, 165, 176, 0.7);
         }
         
         #newPoemBtn:active {
-            transform: translateY(1px);
+            transform: translateY(2px);
         }
         
         #newPoemBtn::after {
@@ -134,20 +166,11 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.2);
             transform: translateX(-100%);
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
         
         #newPoemBtn:hover::after {
             transform: translateX(100%);
-        }
-        
-        footer {
-            margin-top: 30px;
-            color: #7d5a5a;
-            font-size: 1.1rem;
-            padding: 15px;
-            border-top: 1px solid rgba(252, 165, 176, 0.3);
-            width: 100%;
         }
         
         /* Animations */
@@ -163,15 +186,31 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .poem-container {
-                padding: 25px 20px;
+                padding: 30px 20px;
             }
             
             .poem-box {
+                font-size: 1.4rem;
+                line-height: 2.2;
+            }
+            
+            #newPoemBtn {
+                padding: 16px 40px;
                 font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .poem-box {
+                font-size: 1.2rem;
                 line-height: 2.0;
             }
             
@@ -179,25 +218,9 @@
                 padding: 14px 35px;
                 font-size: 1.2rem;
             }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .poem-box {
-                font-size: 1.1rem;
-                line-height: 1.8;
-            }
-            
-            #newPoemBtn {
-                padding: 12px 30px;
-                font-size: 1.1rem;
-            }
             
             .container {
-                padding: 15px;
+                padding: 30px 20px;
             }
         }
         
@@ -209,6 +232,7 @@
             background-color: #fca5b0;
             opacity: 0;
             pointer-events: none;
+            z-index: 10;
         }
         
         .heart::before, .heart::after {
@@ -254,10 +278,8 @@
         </div>
         
         <div class="btn-container">
-            <button id="newPoemBtn">بعد، گلبي بعد...</button>
+            <button id="newPoemBtn">همسة جديدة</button>
         </div>
-        
-        <footer>كرار حيدر – 2025 ©</footer>
     </div>
 
     <script>
@@ -391,7 +413,7 @@
         
         // إنشاء عناصر القلوب
         function createHearts() {
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 25; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.classList.add('heart');
@@ -403,7 +425,7 @@
                     setTimeout(() => {
                         heart.remove();
                     }, 5000);
-                }, i * 200);
+                }, i * 150);
             }
         }
         
