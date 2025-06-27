@@ -105,15 +105,23 @@
         
         .poem-line {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
-            margin: 12px 0;
-            transition-delay: calc(0.2s * var(--line-index));
+            transform: translateX(-30px); /* تغيير الاتجاه من اليسار */
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: 15px 0;
+            transition-delay: calc(0.25s * var(--line-index));
         }
         
         .poem-line.show {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
+        }
+        
+        /* تأثير رجعي بسيط عند اكتمال الظهور */
+        .poem-line.show:nth-child(2n) {
+            transform: translateX(3px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
         .btn-container {
@@ -163,15 +171,15 @@
             transform: translateX(100%);
         }
         
-        /* حركات ظهور الشعر */
+        /* حركات ظهور الشعر - تم التعديل هنا */
         @keyframes fadeSlideIn {
             from { 
                 opacity: 0; 
-                transform: translateY(30px); 
+                transform: translateX(-30px); /* تغيير إلى حركة أفقية */
             }
             to { 
                 opacity: 1; 
-                transform: translateY(0); 
+                transform: translateX(0); 
             }
         }
         
@@ -236,6 +244,11 @@
             .poem-container {
                 padding: 25px 15px;
             }
+            
+            .poem-line {
+                margin: 10px 0;
+                transform: translateX(-20px);
+            }
         }
         
         @media (max-width: 360px) {
@@ -250,6 +263,11 @@
             #newPoemBtn {
                 padding: 14px 35px;
                 font-size: 1.2rem;
+            }
+            
+            .poem-line {
+                margin: 8px 0;
+                transform: translateX(-15px);
             }
         }
         
@@ -351,8 +369,9 @@
             // إخفاء الأسطر الحالية بسلاسة
             const lines = poemBox.querySelectorAll('.poem-line');
             lines.forEach((line, index) => {
+                line.classList.remove('show');
                 line.style.opacity = '0';
-                line.style.transform = 'translateY(30px)';
+                line.style.transform = 'translateX(-30px)';
                 setTimeout(() => {
                     line.remove();
                 }, 500);
@@ -376,7 +395,7 @@
                     // تأخير ظهور كل سطر
                     setTimeout(() => {
                         p.classList.add('show');
-                    }, 200 * (index + 1));
+                    }, 250 * (index + 1));
                 });
             }, 500);
         }
